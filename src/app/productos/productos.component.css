@@ -4,7 +4,7 @@
     gap: 1rem;
     grid-auto-rows: 33rem;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    margin: 3rem 0;
+    margin: 2rem 0 1rem;
     padding-bottom: 30px;
     position: relative;
     top: 14vh;
@@ -24,16 +24,34 @@
 
 .card-item:hover {
     transform: scale(1.04);
-    transition: 0.9s all;
+    transition: 0.6s all;
     box-shadow:5px 3px 15px 3px  rgba(0, 0, 0, 0.3);
 }
 
+.content {
+    display: flex;
+    font-size: 1rem;
+}
 
+.content span {
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    z-index: 1;
+}
+
+.button {
+    background: #2188a1;
+    font-size: 1rem;
+    font-weight: 800;
+    border-radius: 40%;
+    color: #fff;
+    margin: 0 6px;
+}
 
 .animation:hover {
     box-shadow: 5px 5px 30px #0a4dc9;
-    transition: all 0.6s ease;
-    filter: blur(0.2px);
+    transition: all 0.2s ease;
 }
 
 .card-img-top {
@@ -41,8 +59,28 @@
     border-radius: 20px;
 }
 
-.img-carrito {
-    width: 25vw;
-    padding: 1.5rem;
+.btn-primary {
+  margin: 0 10px;
 }
 
+.footer {
+    margin-bottom: 0px;
+}
+
+
+@media screen and (max-width: 768px) {
+ .gallery {
+        gap: 1.3rem;
+        grid-auto-rows: 15%;
+        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+        margin: 4rem 0;
+        padding-bottom: 40px;
+        position: relative;
+        top: 14vh;
+}
+
+.card-item {
+  height: 55vh;
+  margin-bottom: 3rem;
+}
+}

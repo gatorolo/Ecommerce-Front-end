@@ -6,7 +6,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductosComponent } from './productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { FilterPipe } from './shared/filter.pipe';
 
 
 
@@ -17,6 +21,10 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     ProductosComponent,
+    CartComponent,
+    LoginComponent,
+    ContactoComponent,
+    FilterPipe,
   
    
   ],
@@ -24,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,23 @@
+.table {
+    position: relative;
+    top: 21vh;
+    overflow-x: hidden;
+}
+b {
+    color: rgb(122, 199, 243);
+}
+
+.delete {
+    position: relative;
+    display: block;
+    margin:auto;
+    margin-top: 30%;
+}
+
+.precio {
+    width: auto;
+}
+
+img {
+    width: 10rem;
+}

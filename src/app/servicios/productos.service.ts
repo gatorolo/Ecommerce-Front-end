@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Productos } from '../models/productos';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
 
-  private apiServerUrl= environment.apiBaseUrl;
+  private apiServerUrl= 'http://localhost:8080'
+
+  public search = new BehaviorSubject<string>("");
 
   constructor(private http:HttpClient) { }
 
@@ -28,4 +30,6 @@ export class ProductosService {
   public deleteProducto(productoId:number):Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/productos/delete/${productoId}`);
   }
+
+  cartSubject = new Subject<any>();
 }

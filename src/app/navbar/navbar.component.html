@@ -1,17 +1,38 @@
 <header>
     <nav class="navbar navbar-light min-vw-100">
-    <h1 class="m-2">E-Comercial</h1>
+    <h1 class="m-2 titulo"><a routerLink="login" class="login">E</a>-Commerce</h1>
     <div>
-        <input type="text" placeholder="Buscar Producto"/>
+        <input type="text" placeholder="Buscar Producto" [(ngModel)]="searchTerm" (keyup)="search($event)"/>
         <button class="btn btn-secondary m-3">Buscar</button>
     </div>
+    
     <ul class="nav-item">
-        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="home">Inicio</a></li>
         <li><a routerLink="productos">Productos</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#"><i class="bi bi-cart mx-5 fs-4" id="carritoContenedor"><span>0</span></i></a></li>
-        
-        
+        <li><a routerLink="contacto">Contacto</a></li>
+        <div class="class-icon">
+            <a routerLink="cart" (click)="showModal()"><i class="bi bi-cart mx-5 fs-3" id="carritoContenedor"><span>{{cartItem}}</span></i></a> 
+        </div>
     </ul>
 </nav>
+<div class="container-xl" id="modal">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title fs-5">Carrito</h3>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" id="vaciarCarrito" data-bs-dismiss="modal">Vaciar Carrito</button>
+              <button type="button" class="btn btn-primary" id="procesarCompra">Continuar Compra</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+              <span><b>Precio Total: Ars$</b></span>
+              <p class="text-center" id="precioTotal"><b></b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </header>
