@@ -26,7 +26,9 @@
               "src/styles.css",
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
+            ]
           },
           "configurations": {
             "production": {

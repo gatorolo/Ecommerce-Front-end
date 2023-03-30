@@ -6,7 +6,7 @@
   z-index: 1;
   background: #0e0b0b;
   width: 98%;
-  height: 15vh;
+  height: 16vh;
 }
 
 .navbar h1 {
@@ -74,18 +74,15 @@
   cursor: none;
 }
 
+@media screen and (max-width: 506px) {
+  header input {
+    position: relative;
+    left: 3rem;
+  }
+}
 
 
 @media screen and (max-width: 588px) {
-
-input {
-  display: none;
-}
-
-button {
-  display: none;
-}
-
 header nav ul {
   position: relative;
   left: 10%;
@@ -97,5 +94,10 @@ header nav ul {
     position: relative;
     left: 10%;
     top: -1rem;
+  }
+
+  header input {
+    position: relative;
+    margin-right: 1.5rem;
   }
 }

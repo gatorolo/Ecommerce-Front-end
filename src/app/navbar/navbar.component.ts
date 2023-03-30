@@ -47,6 +47,7 @@ search(event:any) {
   this.searchTerm = (event.target as HTMLInputElement).value;
   console.log(this.searchTerm)
   this.producto.search.next(this.searchTerm);
+  this.router.navigate(['productos']);
 }
 }
 
