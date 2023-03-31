@@ -15,11 +15,11 @@ export class ProductosService {
 
   constructor(private http:HttpClient) { }
 
-  public getproductos():Observable<Productos[]>{
+  public getproducto():Observable<Productos[]>{
     return this.http.get<Productos[]>(`${this.apiServerUrl}/productos/all`);
   }
 
-  public addProducto(producto:Productos):Observable<Productos> {
+  public addProducto(producto: Productos):Observable<Productos> {
     return this.http.post<Productos>(`${this.apiServerUrl}/productos/add`, producto);
   }
 
@@ -27,8 +27,8 @@ export class ProductosService {
     return this.http.put<Productos>(`${this.apiServerUrl}/productos/update`, producto);
   }
 
-  public deleteProducto(productoId:number):Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/productos/delete/${productoId}`);
+  public deleteProducto(Id:number):Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/productos/delete/${Id}`);
   }
 
   cartSubject = new Subject<any>();

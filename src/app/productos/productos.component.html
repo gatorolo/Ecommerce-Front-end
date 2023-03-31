@@ -1,49 +1,332 @@
 
-<hr>
-<main class="container">
-  <div class="gallery">
-    <div class="card card-item" *ngFor="let producto of productos | filter:searchKey:'titulo'">
-      <div class="card-body">
-        <img class="card-img-top" src="{{ producto.img }}" />
-        <h4 class="card-title mt-5 fs-3"><b>{{ producto.titulo }}</b></h4>
-        <p class="card-text fs-4"><b>Precio:</b> {{ producto.precio }}</p>
-        <p class="card-text fs-5">
-          <b>{{ producto.descripcion }}</b>
-        </p>
-        
-        <div class="content">
-          <button type="button" class="button" (click)="aum(producto)"><i class="bi bi-plus-lg"></i></button>
-             <span>{{producto.cantidad}}</span>
-             <button type="button" class="button" (click)="dec(producto)"><i class="bi bi-dash-lg"></i></button>
-             <button (click)="addCart(producto)" class="btn btn-primary mt-2 animation">
-               Agregar al Carrito
-             </button>
-             <a><b>Editar</b></a>
+<div class="container">
+  <div class="main-container m-0">
+    <div class="text-center mt-4">
+      <button
+        type="button"
+        class="btn btn-success btn-sm text-center Abrir"
+        (click)="onOpenModal('add')"
+        *ngIf="islogged"
+      >
+        <a class="nav-link fs-4 mx-5" style="color: #fff">
+          Sumar Producto <span class="sr-only">(current)</span></a
+        >
+      </button>
+    </div>
+
+    <div id="main-container" class="gallery">
+      <div class="card card-item" *ngFor="let producto of productos | filter:searchKey:'titulo'">
+        <div class="card-body">
+          <img class="card-img-top" src="{{ producto.img }}" />
+          <p class="card-title mt-5 fs-3"><b>{{ producto.titulo }}</b></p>
+          <p class="card-text fs-4"><b>Precio:</b> {{ producto.precio }}</p>
+          <p class="card-text fs-4"><b>Cantidad:</b> {{ producto.cantidad }}</p>
+          
+          <div class="content">
+            <button type="button" class="button sumar" (click)="aum(producto)"><i class="bi bi-plus-lg"></i></button>
+               <span class="qnt">{{producto.cantidad}}</span>
+               <button type="button" class="button sumar" (click)="dec(producto)"><i class="bi bi-dash-lg"></i></button>
+               <button (click)="addCart(producto)" class="btn btn-primary mt-2 animation agregar">
+                 Agregar al Carrito
+               </button>
+          </div>
+
+          <div class="col text-center">
+            <a
+              (click)="onOpenModal('edit', producto)"
+              class="btn btn-warning mx-4 btn-change"
+              style="font-weight: bold"
+              data-placement="top"
+              data-toggle="tooltip"
+              data-original-title="edit"
+              *ngIf="islogged"
+              ></a>
+            <a
+              (click)="onOpenModal('delete', producto)"
+              class="btn btn-danger btn-change"
+              style="font-weight: bold"
+              data-placement="top"
+              data-toggle="tooltip"
+              data-original-title="delete"
+              *ngIf="islogged"
+              ></a>
+          </div>
+          </div>
+      </div>
+  
+
+    <!--Add Modal-->
+
+    <div
+      class="modal fade"
+      id="addProductoModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addProductoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title text-dark" id="addProductoModalLabel">
+              <b>Sumà un Producto</b>
+            </h2>
+          </div>
+
+          <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddProducto(addForm)">
+             
+              <div class="form-group text-center">
+                <label for="img" class="h3"><b>URL de la Imagen</b> </label>
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel
+                  name="img"
+                  class="form-control text-center fs-3"
+                  id=" img"
+                  placeholder="URL"
+                  required
+                />
+              </div>
+             
+              <div class="form-group text-center">
+                <label for="titulo" class="h3"><b>Sumà un Título</b> </label>
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel
+                  name="titulo"
+                  class="form-control text-center fs-3"
+                  id="titulo"
+                  placeholder="Titulo"
+                  required
+                />
+              </div>
+
+              <div class="form-group text-center">
+                <label for="precio" class="h3"
+                  ><b>Sumà un Precio</b></label
+                >
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel
+                  name="precio"
+                  class="form-control text-center fs-3"
+                  id="precio"
+                  placeholder="$Precio"
+                  required
+                />
+              </div>
+
+
+              <div class="form-group text-center">
+                <label for="cantidad" class="h3"
+                  ><b>Sumà una Cantidad</b></label
+                >
+                <input
+                  type="number"
+                  style="font-weight: bold"
+                  ngModel
+                  name="cantidad"
+                  class="form-control text-center fs-3"
+                  id="cantidad"
+                  placeholder="Cantidad"
+                  required
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="add-producto-form"
+                  class="btn btn-secondary fs-3"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  [disabled]="addForm.invalid"
+                  type="submit"
+                  class="btn btn-success fs-3"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container-xl">
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title fs-5">Carrito</h3>
-            </div>
-            <div class="modal-body"></div>
+    <!--Edit Modal-->
+
+    <div
+      class="modal fade"
+      id="updateProductoModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ProductoUpdateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header alAbrir text-center">
+            <h3 class="modal-title text-dark fs-3" id="updateProductoModalLabel">
+              <b>Edità un Producto:</b> {{ updateProducto?.titulo }}
+            </h3>
+          </div>
+
+          <div class="modal-body">
+            <form #editForm="ngForm">
+
+              <div class="form-group text-center">
+                <label for="img" style="font-weight: bold" class="h3"
+                  ><b>URL de la Imagen</b>
+                </label>
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel="{{ updateProducto?.img }}"
+                  name="img"
+                  class="form-control text-center fs-4"
+                  id="img"
+                  placeholder="URL de la Imagen"
+                />
+              </div>
+              <br />
+
+              <div class="form-group text-center">
+                <label for="titulo" style="font-weight: bold" class="h3"
+                  ><b>Tu Titulo aquì</b></label
+                >
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel="{{ updateProducto?.titulo }}"
+                  name="titulo"
+                  class="form-control text-center fs-4"
+                  id="titulo"
+                  aria-labelledby="emailHelp"
+                  placeholder="Titulo"
+                />
+              </div>
+               <br/>
+
+               <div class="form-group text-center">
+                <label for="precio" style="font-weight: bold" class="h3"
+                  ><b>Precio nuevo</b></label
+                >
+                <input
+                  type="text"
+                  style="font-weight: bold"
+                  ngModel="{{ updateProducto?.precio }}"
+                  name="precio"
+                  class="form-control text-center fs-4"
+                  id="precio"
+                  placeholder="Precio Nuevo"
+                />
+              </div>
+              <input
+                type="hidden"
+                ngModel="{{ updateProducto?.id }}"
+                name="id"
+                class="form-control text-center"
+                id="id"
+                aria-labelledby="emailHelp"
+                placeholder=""
+              />
+              <br />
+
+              <div class="form-group text-center">
+                <label for="cantidad" style="font-weight: bold" class="h3"
+                  ><b>Sumà una Cantidad</b></label
+                >
+                <input
+                  type="number"
+                  style="font-weight: bold"
+                  ngModel="{{ updateProducto?.cantidad }}"
+                  name="cantidad"
+                  class="form-control text-center fs-4"
+                  id="cantidad"
+                  placeholder="cantidad"
+                />
+              </div>
+
+              <br/>
+
+              
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id=""
+                  class="btn btn-secondary fs-3"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+
+                <button
+                  (click)="onUpdateProducto(editForm.value)"
+                  data-dismiss="modal"
+                  class="btn btn-success fs-3"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Delete Modal-->
+
+    <div
+      data-bs-toggle="modal"
+      data-bs-target="#deleteModalLabel"
+      class="modal fade"
+      id="deleteProductoModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="deleteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog text-center" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center alAbrir">
+            <h3 class="modal-title text-dark" id="deleteModalLabel">
+              <b>Borrar Producto</b>
+            </h3>
+          </div>
+
+          <div class="moda-body mt-5">
+            <p class="h4">
+              <b>Estas seguro de borrar?</b>
+              {{ deleteProducto?.titulo }}
+            </p>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" id="vaciarCarrito" data-bs-dismiss="modal">Vaciar Carrito</button>
-              <button type="button" class="btn btn-primary" id="procesarCompra">Continuar Compra</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-              <span><b>Precio Total: Ars$</b></span>
-              <p class="text-center" id="precioTotal"><b></b></p>
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg mx-4 fs-3"
+                data-dismiss="modal"
+              >
+                No
+              </button>
+              <button
+                (click)="onDeleteProducto(deleteProducto!.id)"
+                class="btn btn-danger btn-lg fs-3"
+                data-dismiss="modal"
+              >
+                Yes
+              </button>
             </div>
           </div>
         </div>
       </div>
-      
-  </div>
-</main>
+    </div>
+</div> 
+
 

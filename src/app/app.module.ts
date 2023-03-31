@@ -15,6 +15,7 @@ import { FilterPipe } from './shared/filter.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,18 +23,17 @@ import { FilterPipe } from './shared/filter.pipe';
     HomeComponent,
     ProductosComponent,
     CartComponent,
-    LoginComponent,
     ContactoComponent,
     FilterPipe,
-  
-   
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

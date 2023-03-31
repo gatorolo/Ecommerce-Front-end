@@ -9,6 +9,9 @@
   height: 16vh;
 }
 
+a {
+  text-decoration: none;
+}
 .navbar h1 {
   color: rgb(242, 239, 245);
   padding-left: 10%;
@@ -89,7 +92,7 @@ header nav ul {
 }
 }
 
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 935px) {
   header nav ul {
     position: relative;
     left: 10%;

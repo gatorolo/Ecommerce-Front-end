@@ -3,7 +3,7 @@
     display: grid;
     gap: 1rem;
     grid-auto-rows: 33rem;
-    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     margin: 2rem 0 1rem;
     padding-bottom: 30px;
     position: relative;
@@ -29,8 +29,10 @@
 }
 
 .content {
+    position: relative;
     display: flex;
     font-size: 1rem;
+    top: -20px;
 }
 
 .content span {
@@ -41,13 +43,20 @@
     z-index: 1;
 }
 
-.button {
+.sumar {
     background: #2188a1;
     font-size: 1rem;
     font-weight: 800;
     border-radius: 35%;
     color: #fff;
     margin: 0 6px;
+}
+
+.Abrir {
+    position: relative;
+    top: 100px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .animation:hover {
@@ -64,32 +73,39 @@
   margin: 0 10px;
 }
 
-a {
-    color: #fff;
-    margin-top: 10px;
-    border: 1px solid #0a4dc9;
-    padding: 10px 4px;
-    border-radius: 30%;
-}
 
-.footer {
-    margin-bottom: 0px;
-}
-
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
  .gallery {
-        gap: 1.3rem;
-        grid-auto-rows: 15%;
-        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-        margin: 4rem 0;
-        padding-bottom: 40px;
-        position: relative;
-        top: 14vh;
+        gap: 1.5rem;
+        grid-row-gap: 18rem;
+        grid-auto-rows: 21rem;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        top: 10vh;
 }
 
-.card-item {
-  height: 55vh;
-  margin-bottom: 3rem;
+.btn-sm{
+    position: relative;
+    margin-top: 5vh;
+}
+
+.card {
+  height: 65vh;
+  margin-top: 2rem;
+
+}
+
+.content {
+    align-items: center;
+}
+  
+
+  
+.sumar {
+    margin: 45px 6px;
+}
+
+.qnt {
+    position: relative;
+    margin-top: 15px 0;
 }
 }

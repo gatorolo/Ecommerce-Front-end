@@ -1,35 +1,51 @@
 <div class="container">
-    <section class="row" style="background-color: transparent">
-      <div class="py-4 ">
-        <div class="row d-flex justify-content-center align-items-center h-80">
-          <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6">
-            <div class="card shadow-1-strong" style="border-radius: 1rem;">
-                 <h5 class="text-center mt-4 blank"><strong>Login</strong></h5>
-              <div class="card-body pb-5 text-center">
-                 <hr>
-                <form #f="ngForm">
-                  <div class="form mb-1">
-                    <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control form-control-lg border border-primary" />
-                    <label class="form-label blank" for="nombreUsuario" ><strong>Usuario</strong></label>
-                  </div>
-  
-                  <div class="form mb-1">
-                    <input type="password" id="password"
-                      class="form-control form-control-lg border border-primary"/>
-                    <label class="form-label blank" for="password"><Strong>Contraseña</Strong></label>
-                  </div>
-                </form>
-              </div>
-              <hr>
-              <button type="button" class="btn btn-primary my-2 btn-sm">
-              Login
-             </button>
-          
+  <section class="row" style="background-color: transparent">
+    <div class="py-4">
+      <div class="row d-flex justify-content-center align-items-center h-80">
+        <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6">
+          <div class="card shadow-1-strong" style="border-radius: 1rem">
+            <h5 class="text-center mt-4 blank"><strong>Login</strong></h5>
+            <div class="card-body pb-5 text-center">
+              <hr />
+              <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                <div class="form mb-1">
+                  <input
+                    type="text"
+                    id="nombreUsuario"
+                    name="nombreUsuario"
+                    class="form-control form-control-lg border border-primary"
+                    [(ngModel)] = "nombreUsuario" [ngModelOptions]="{standalone: true}" required
+                  />
+                  <label class="form-label blank" for="nombreUsuario"
+                    ><strong>Usuario</strong></label
+                  >
+                </div>
+
+                <div class="form mb-1">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control form-control-lg border border-primary"
+                    [(ngModel)] = "password" [ngModelOptions]="{standalone: true}" required
+                  />
+                  <label class="form-label blank" for="password"
+                    ><Strong>Contraseña</Strong></label
+                  >
+                </div>
+                <div>
+                  <hr />
+                  <button type="submit" class="btn btn-primary my-2 btn-sm">
+                    Login
+                  </button>
+                  <button type="submit" class="btn btn-primary my-2 btn-sm" (click)="onLogOut()">
+                    logout
+                  </button>
+                </div>
+              </form>
             </div>
-           
           </div>
         </div>
       </div>
-    </section>
-  </div>
- 
+    </div>
+  </section>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
-import swal from 'sweetalert';
-import { Router, Routes } from '@angular/router';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { TokenService } from '../servicios/token.servive';
 
 
 @Component({
@@ -11,8 +12,9 @@ import { Router, Routes } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public searchTerm !:string;
+  isLogged = false;
 
-  constructor(private producto: ProductosService, private router: Router) {
+  constructor(private tokenService: TokenService ,private producto: ProductosService, private router: Router) {
     this.producto.cartSubject.subscribe((data) => {
       this.cartItem = data;
     })
@@ -20,8 +22,23 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItemFunc();
+    if(this.tokenService.getToken()) {
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+    }
   } 
   
+  onLogOut():void {
+    this.tokenService.logOut();
+    window.location.reload();
+    this.router.navigate([''])
+  }
+
+  login() {
+    this.router.navigate(['home'])
+  }
+
  cartItem:number = 0;
  cartItemFunc() {
   if(localStorage.getItem('localCart') != null) {
@@ -32,9 +49,9 @@ export class NavbarComponent implements OnInit {
 
  showModal() {
   if(this.cartItem === 0) {
-    swal({
-    title: 'error',
-    text: '"CARRITO VACIO"',
+    swal.fire({
+    title: 'Nada para Comprar',
+    text: 'CARRITO VACIO',
     icon: "error",
    });
   this.router.navigate(['productos']);
