@@ -1,31 +1,146 @@
 <div class="container">
 
+  <div class="main-container m-0">
+       
+   <div id="main-container" class="main-container">
+       
+         <div class="row item text-center" *ngFor="let social of socials">
+           <div class="row mt-5">
+             <ul class="red">
+              <li> <a href={{social.faceSocial}} target="_blank" rel="noopener noreferrer">
+                <fa-icon [IconProp]="faFacebookF" aria-hidden="true"></fa-icon>
+                 </a></li>
+                 <li><a href={{social.instaSocial}} target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-square-instagram"></i>
+                 </a></li>
+                 <li><a href={{social.twitSocial}} target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-twitter"></i>
+                 </a></li>
+                 <li><a href={{social.whatsSocial}} target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-whatsapp"></i>
+                 </a></li>
+               </ul>  
+           </div>
          
-     <div id="main-container" class="main-container">
-         
-           <div class="row item text-center">
-             <div class="row mt-5">
-              <ul class="red">
-                <li> <a href="" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-facebook" font-size="50px"></i>
-                   </a></li>
-
-                   <li><a href="" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-square-instagram"></i>
-                   </a></li>
-        
-                   <li><a href="" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-twitter"></i>
-                   </a></li>
-
-                   <li><a href="" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i>
-                   </a></li>
-                 </ul>  
+           <div class="col text-center">
+             <a
+               (click)="onOpenModal('edit', social)"
+               class="btn btn-warning btn-change mx-4"
+               style="font-weight: bold"
+               data-placement="top"
+               data-toggle="tooltip"
+               data-original-title="edit"
+               *ngIf="isLogged"
+             >edit</a>
+           </div>
+         </div>
+   </div>
+    
+ 
+         <!--Edit Modal-->
+       
+        <div
+           class="modal fade"
+           id="editSocialModal"
+           tabindex="-1"
+           role="dialog"
+           aria-labelledby="SocialEditModalLabel"
+           aria-hidden="true"
+         >
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header text-center">
+               <h3 class="modal-title text-dark" id="updateSocialModalLabel">
+                 <h2><b>Edità tu Red:</b></h2> 
+               </h3>
              </div>
-           
-           
+       
+             <div class="modal-body">
+               <form #editForm="ngForm" >
+                 <div class="form-group text-center">
+                   <label for="name" style="font-weight: bold" class="h3"><b>tu URL de Facebook</b></label>
+                   <input
+                     type="text"
+                     style="font-weight: bold"
+                     ngModel="{{editSocial?.faceSocial}}"
+                     name="faceSocial"
+                     class="form-control text-center fs-4"
+                     id="faceSocial"
+                     aria-labelledby="emailHelp"
+                     placeholder="red social"
+                   />
+                 </div>
+                 <div class="form-group text-center">
+                   <label for="name" style="font-weight: bold" class="h3"><b>tu URL de Instagram</b></label>
+                   <input
+                     type="text"
+                     style="font-weight: bold"
+                     ngModel="{{editSocial?.instaSocial}}"
+                     name="instaSocial"
+                     class="form-control text-center fs-4"
+                     id="instaSocial"
+                     aria-labelledby="emailHelp"
+                     placeholder="red social"
+                   />
+                 </div>
+                
+                 <div class="form-group text-center">
+                   <label for="name" style="font-weight: bold" class="h3"><b>tu URL de Twitter</b></label>
+                   <input
+                     type="text"
+                     style="font-weight: bold"
+                     ngModel="{{editSocial?.twitSocial}}"
+                     name="twitSocial"
+                     class="form-control text-center fs-4"
+                     id="twitSocial"
+                     aria-labelledby="emailHelp"
+                     placeholder="red social"
+                   />
+                 </div>
+                 <div class="form-group text-center">
+                   <label for="name" style="font-weight: bold" class="h3"><b>tu URL de Whatsapp</b></label>
+                   <input
+                     type="text"
+                     style="font-weight: bold"
+                     ngModel="{{editSocial?.whatsSocial}}"
+                     name="whatsSocial"
+                     class="form-control text-center fs-4"
+                     id="whatsSocial"
+                     aria-labelledby="emailHelp"
+                     placeholder="red social"
+                   />
+                 </div>
+                 
+                   
+ 
+                 <div class="modal-footer">
+                   <button
+                     type="button"
+                     id=""
+                     class="btn btn-secondary fs-3"
+                     data-dismiss="modal"
+                   >
+                     Close
+                   </button>
+ 
+                   <button
+                   (click)="onUpdateSocial(editForm.value)"
+                   data-dismiss="modal"
+                   class="btn btn-success fs-3"
+                   >
+                   Save
+                   </button>
+                   </div>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
 </div>
+
+</div>
+
+
 
 
 

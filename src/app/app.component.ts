@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoginUsuario } from './modelos/login-usuario';
 import { AuthService } from './servicios/authService';
 import { TokenService } from './servicios/token.servive';
-
+import {faInstagram, faFacebookF, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,11 @@ import { TokenService } from './servicios/token.servive';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  faInstagram = faInstagram;
+  faFacebookF = faFacebookF;
+  faWhatsapp = faWhatsapp;
+  faTwitter = faTwitter;
+
 
   isLogged = false;
   loginUsuario!: LoginUsuario;

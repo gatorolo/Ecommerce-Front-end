@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { FilterPipe } from './shared/filter.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -33,7 +34,7 @@ import { FilterPipe } from './shared/filter.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,12 +20,13 @@
           <img class="card-img-top" src="{{ producto.img }}" />
           <p class="card-title mt-5 fs-3"><b>{{ producto.titulo }}</b></p>
           <p class="card-text fs-4"><b>Precio:</b> {{ producto.precio }}</p>
-          <p class="card-text fs-4"><b>Cantidad:</b> {{ producto.cantidad }}</p>
+          <h4><b>Cantidad</b></h4>
+          <button type="button" class="button sumar" (click)="aum(producto)"><i class="bi bi-plus-lg"></i></button>
+          <span class="qnt"><b>{{producto.cantidad}}</b></span>
+          <button type="button" class="button sumar" (click)="dec(producto)"><i class="bi bi-dash-lg"></i></button>
+          <br>
           
           <div class="content">
-            <button type="button" class="button sumar" (click)="aum(producto)"><i class="bi bi-plus-lg"></i></button>
-               <span class="qnt">{{producto.cantidad}}</span>
-               <button type="button" class="button sumar" (click)="dec(producto)"><i class="bi bi-dash-lg"></i></button>
                <button (click)="addCart(producto)" class="btn btn-primary mt-2 animation agregar">
                  Agregar al Carrito
                </button>
@@ -309,7 +310,7 @@
             </p>
             <div class="modal-footer">
               <button
-                type="button"
+                type="button "
                 class="btn btn-secondary btn-lg mx-4 fs-3"
                 data-dismiss="modal"
               >

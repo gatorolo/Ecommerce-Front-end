@@ -32,7 +32,6 @@
     position: relative;
     display: flex;
     font-size: 1rem;
-    top: -20px;
 }
 
 .content span {
@@ -57,6 +56,14 @@
     top: 100px;
     color: #fff;
     text-decoration: none;
+}
+
+.btn-warning , .btn-secondary , .btn-danger , .btn-success {
+    margin-top: 20px;
+}
+
+.btn-danger {
+    margin-top: 20px;
 }
 
 .animation:hover {
@@ -97,15 +104,5 @@
 .content {
     align-items: center;
 }
-  
 
-  
-.sumar {
-    margin: 45px 6px;
-}
-
-.qnt {
-    position: relative;
-    margin-top: 15px 0;
-}
 }
